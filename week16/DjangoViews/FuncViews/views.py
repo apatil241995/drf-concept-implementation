@@ -22,7 +22,7 @@ def postEmployee_data(request):
     return Response(status=status.HTTP_400_BAD_REQUEST, data=serialized_data.errors)
 
 @api_view(["PUT"])
-def putEmployee_data(request):
+def updateEmployee_data(request):
     employee_info = models.EmployeeData.objects.get(id=id)
     serializer = FuncViewsSerializer(employee_info, data=request.data)
     if serializer.is_valid():
