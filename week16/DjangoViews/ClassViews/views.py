@@ -3,9 +3,13 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import StudentData
 from .serialiers import ClassViewsSerializer
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAdminUser
 
 
 class StudentEntries(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAdminUser]
 
     def get(self, request):
         student_data = StudentData.objects.all()
