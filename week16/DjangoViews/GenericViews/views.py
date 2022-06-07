@@ -5,6 +5,10 @@ from .models import CustomerData
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import DjangoModelPermissions
 
+"""
+view created to get all the student entries
+"""
+
 
 class CustomerList(generics.ListAPIView):
     authentication_classes = [SessionAuthentication]
@@ -14,6 +18,11 @@ class CustomerList(generics.ListAPIView):
 
     def get_queryset(self):
         return self.queryset
+
+
+"""
+view created to create a student entre
+"""
 
 
 class CreateCustomerEntry(generics.CreateAPIView):
@@ -26,6 +35,11 @@ class CreateCustomerEntry(generics.CreateAPIView):
         return serializer.save()
 
 
+"""
+view created to update a student entre
+"""
+
+
 class UpdateCustomerEntry(generics.UpdateAPIView):
     authentication_classes = [SessionAuthentication]
     permission_classes = [DjangoModelPermissions]
@@ -35,6 +49,11 @@ class UpdateCustomerEntry(generics.UpdateAPIView):
 
     def perform_update(self, serializer):
         return serializer.save(self.request.data)
+
+
+"""
+view created to delete a  student entre
+"""
 
 
 class DeleteCustomerEntry(generics.DestroyAPIView):

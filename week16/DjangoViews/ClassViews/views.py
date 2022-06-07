@@ -6,6 +6,10 @@ from .serialiers import ClassViewsSerializer
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAdminUser
 
+"""
+view created to get all the student entries
+"""
+
 
 class StudentEntries(APIView):
     authentication_classes = [BasicAuthentication]
@@ -15,6 +19,11 @@ class StudentEntries(APIView):
         student_data = StudentData.objects.all()
         serialized_data = ClassViewsSerializer(student_data, many=True)
         return Response(data=serialized_data.data)
+
+
+"""
+view created to create a student entre
+"""
 
 
 class CreateStudentEntries(APIView):
@@ -28,6 +37,11 @@ class CreateStudentEntries(APIView):
             serialized_data.save()
             return Response(status=status.HTTP_201_CREATED, data=serialized_data.data)
         return Response(status=status.HTTP_400_BAD_REQUEST, data=serialized_data.errors)
+
+
+"""
+view created to update a student entre
+"""
 
 
 class UpdateStudentEntries(APIView):
@@ -44,6 +58,11 @@ class UpdateStudentEntries(APIView):
             return Response({"status": "error", "data": serializer.errors})
 
 
+"""
+view created to partly update a student entre
+"""
+
+
 class ParUpdateStudentEntries(APIView):
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAdminUser]
@@ -56,6 +75,11 @@ class ParUpdateStudentEntries(APIView):
             return Response({"status": "success", "data": serializer.data})
         else:
             return Response({"status": "error", "data": serializer.errors})
+
+
+"""
+view created to delete a  student entre
+"""
 
 
 class DeleteStudentEntries(APIView):

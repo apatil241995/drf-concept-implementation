@@ -4,12 +4,21 @@ from rest_framework import status
 from . import models
 from .serialiers import FuncViewsSerializer
 
+"""
+view created to get all the student entries
+"""
+
 
 @api_view(["GET"])
 def getEmployee_data(request):
     student_data = models.EmployeeData.objects.all()
     serialized_data = FuncViewsSerializer(student_data, many=True)
     return Response(data=serialized_data.data)
+
+
+"""
+view created to create a student entre
+"""
 
 
 @api_view(["POST"])
@@ -21,6 +30,12 @@ def postEmployee_data(request):
         return Response(status=status.HTTP_201_CREATED, data=serialized_data.data)
     return Response(status=status.HTTP_400_BAD_REQUEST, data=serialized_data.errors)
 
+
+"""
+view created to update a student entre
+"""
+
+
 @api_view(["PUT"])
 def updateEmployee_data(request):
     employee_info = models.EmployeeData.objects.get(id=id)
@@ -30,6 +45,11 @@ def updateEmployee_data(request):
         return Response({"status": "success", "data": serializer.data})
     else:
         return Response({"status": "error", "data": serializer.errors})
+
+
+"""
+view created to delete a  student entre
+"""
 
 
 @api_view(["DELETE"])
