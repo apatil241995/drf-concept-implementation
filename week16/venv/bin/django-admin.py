@@ -1,4 +1,4 @@
-#!/home/mindbowser/shope/week16/venv/bin/python
+#!/home/mindbowser/Django Concepts| AP/week16/venv/bin/python
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

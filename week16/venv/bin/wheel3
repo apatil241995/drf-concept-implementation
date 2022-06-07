@@ -1,4 +1,6 @@
-#!/home/mindbowser/shope/week16/venv/bin/python
+#!/bin/sh
+'''exec' "/home/mindbowser/Django Concepts| AP/week16/venv/bin/python" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys

@@ -20,3 +20,20 @@ def postEmployee_data(request):
         serialized_data.save()
         return Response(status=status.HTTP_201_CREATED, data=serialized_data.data)
     return Response(status=status.HTTP_400_BAD_REQUEST, data=serialized_data.errors)
+
+@api_view(["PUT"])
+def putEmployee_data(request):
+    employee_info = models.EmployeeData.objects.get(id=id)
+    serializer = FuncViewsSerializer(employee_info, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"status": "success", "data": serializer.data})
+    else:
+        return Response({"status": "error", "data": serializer.errors})
+
+
+@api_view(["DELETE"])
+def deleteEmployee_data(request):
+    result = models.EmployeeData.objects.get(id=id)
+    result.delete()
+    return Response({"status": "success", "data": "Record Deleted"})

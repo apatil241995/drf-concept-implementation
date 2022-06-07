@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import CostumerData
+from .models import CustomerData
 
 
-class GenViewsSerializer(serializers.Modelserializer):
+class GenViewsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CostumerData
+        model = CustomerData
         fields = "__all__"
